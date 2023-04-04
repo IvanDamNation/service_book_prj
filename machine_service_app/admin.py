@@ -19,6 +19,7 @@ class MachineAdmin(admin.ModelAdmin):
 
 # Maintenance
 # Complaint
+# Dictionary?
 
 
 admin.site.register(Machine, MachineAdmin)
