@@ -30,7 +30,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     'rest_framework',
 
@@ -61,6 +64,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 ROOT_URLCONF = 'service_book_prj.urls'
 
 TEMPLATES = [
@@ -78,6 +86,12 @@ TEMPLATES = [
         },
     },
 ]
+
+ACCOUNT_LOGOUT_REDIRECT_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_AUTO_SIGNUP = False
 
 WSGI_APPLICATION = 'service_book_prj.wsgi.application'
 

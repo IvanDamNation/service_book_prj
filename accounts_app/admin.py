@@ -14,6 +14,6 @@ from accounts_app.models import FactoryManager, ServiceManager, Customer
 # Customer
 
 
-# admin.site.register(FactoryManager, FactoryManagerAdmin)
-# admin.site.register(ServiceManager, ServiceManagerAdmin)
-# admin.site.register(Customer, CustomerAdmin)
+admin.site.register(FactoryManager)
+admin.site.register(ServiceManager)
+admin.site.register(Customer)
