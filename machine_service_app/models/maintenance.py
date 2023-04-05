@@ -9,7 +9,7 @@ from .other import Dictionary, ServiceCompany
 
 
 class MaintainType(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Вид ТО')
+    type_dict = models.CharField(max_length=32, default='Вид ТО', editable=False, verbose_name='Тип')
 
     class Meta:
         verbose_name = 'Вид ТО'
@@ -35,7 +35,7 @@ class Maintenance(models.Model):
 
 
 class FailureType(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Характер отказа')
+    type_dict = models.CharField(max_length=32, default='Характер отказа', editable=False, verbose_name='Тип')
 
     class Meta:
         verbose_name = 'Характер отказа'
@@ -43,7 +43,7 @@ class FailureType(Dictionary):
 
 
 class RecoveryMethods(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Способ восстановления')
+    type_dict = models.CharField(max_length=32, default='Способ восстановления', editable=False, verbose_name='Тип')
 
     class Meta:
         verbose_name = 'Способ восстановления'

@@ -1,8 +1,9 @@
 from django.contrib import admin
 
 from machine_service_app.models import \
-    Machine, Maintenance, \
-    Complaint, Dictionary, MachineModel, EngineModel, TransmissionModel, RearAxleModel, FrontAxle
+    Machine, Maintenance, Complaint, \
+    Dictionary, MachineModel, EngineModel, \
+    TransmissionModel, RearAxleModel, FrontAxle
 
 
 class MachineAdmin(admin.ModelAdmin):
@@ -30,9 +31,8 @@ class ComplaintAdmin(admin.ModelAdmin):
     list_filter = ('date_of_complaint', 'recovery_method', 'service_comp', )
 
 
-#  ?
-class DictionaryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', )
+class DictionaryElementsAdmin(admin.ModelAdmin):
+    list_display = ('type_dict', 'name', 'description', )
     list_display_links = ('name', 'description', )
     search_fields = ('name', 'description', )
     list_filter = ('name', 'description', )
@@ -42,11 +42,10 @@ admin.site.register(Machine, MachineAdmin)
 admin.site.register(Maintenance, MaintenanceAdmin)
 admin.site.register(Complaint, ComplaintAdmin)
 
-#  ?
-admin.site.register(Dictionary, DictionaryAdmin)
+# admin.site.register(Dictionary)
 
-admin.site.register(MachineModel)
-admin.site.register(EngineModel)
-admin.site.register(TransmissionModel)
-admin.site.register(RearAxleModel)
-admin.site.register(FrontAxle)
+admin.site.register(MachineModel, DictionaryElementsAdmin)
+admin.site.register(EngineModel, DictionaryElementsAdmin)
+admin.site.register(TransmissionModel, DictionaryElementsAdmin)
+admin.site.register(RearAxleModel, DictionaryElementsAdmin)
+admin.site.register(FrontAxle, DictionaryElementsAdmin)

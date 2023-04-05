@@ -7,25 +7,23 @@ from .other import Dictionary, ServiceCompany
 
 
 class MachineModel(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Модель машины', editable=False)
+    type_dict = models.CharField(max_length=32, default='Модель машины', editable=False, verbose_name='Тип')
 
     class Meta:
-        # proxy = True
         verbose_name = 'Модель машины'
         verbose_name_plural = 'Модели машин'
 
 
 class EngineModel(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Модель двигателя')
+    type_dict = models.CharField(max_length=32, default='Модель двигателя', editable=False, verbose_name='Тип')
 
     class Meta:
-        # proxy = True
         verbose_name = 'Двигатель'
         verbose_name_plural = 'Двигатели'
 
 
 class TransmissionModel(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Трансмиссия')
+    type_dict = models.CharField(max_length=32, default='Трансмиссия', editable=False, verbose_name='Тип')
 
     class Meta:
         verbose_name = 'Трансмиссия'
@@ -33,7 +31,7 @@ class TransmissionModel(Dictionary):
 
 
 class RearAxleModel(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Задний ведущий мост')
+    type_dict = models.CharField(max_length=32, default='Задний ведущий мост', editable=False, verbose_name='Тип')
 
     class Meta:
         verbose_name = 'Задний ведущий мост'
@@ -41,7 +39,7 @@ class RearAxleModel(Dictionary):
 
 
 class FrontAxle(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Передний управляемый мост')
+    type_dict = models.CharField(max_length=32, default='Передний управляемый мост', editable=False, verbose_name='Тип')
 
     class Meta:
         verbose_name = 'Передний управляемый мост'
@@ -74,4 +72,3 @@ class Machine(models.Model):
         verbose_name = 'Машина'
         verbose_name_plural = 'Машины'
         ordering = ['model', 'factory_number']
-
