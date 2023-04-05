@@ -28,6 +28,11 @@ class Maintenance(models.Model):
     machine = models.ForeignKey(Machine, on_delete=models.PROTECT, verbose_name='Машина')
     service_comp = models.ForeignKey(ServiceManager, on_delete=models.PROTECT, verbose_name='Сервисная компания')
 
+    class Meta:
+        verbose_name = 'Техническое обслуживание'
+        verbose_name_plural = 'Техническое обслуживание'
+        ordering = ['-work_order_date', ]
+
 
 class FailureType(Dictionary):
     type_dict = models.CharField(max_length=32, default='Характер отказа')
@@ -65,3 +70,8 @@ class Complaint(models.Model):
         repair = datetime.strptime(str(self.date_of_repair), date_format)
         days_downtime = complaint - repair
         return days_downtime
+
+    class Meta:
+        verbose_name = 'Рекламация'
+        verbose_name_plural = 'Рекламации'
+        ordering = ['-date_of_complaint', ]

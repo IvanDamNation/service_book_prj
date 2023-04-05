@@ -1,14 +1,8 @@
 from django.contrib import admin
 
-from machine_service_app.models import Machine, Maintenance, Complaint
-
-
-# class NewsAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'author', 'title', 'category', 'created_at', 'updated_at', 'is_published')
-#     list_display_links = ('id', 'title')
-#     search_fields = ('title', 'author', 'content')
-#     list_editable = ('is_published', )
-#     list_filter = ('is_published', 'category')
+from machine_service_app.models import \
+    Machine, Maintenance, \
+    Complaint, Dictionary, MachineModel, EngineModel, TransmissionModel, RearAxleModel, FrontAxle
 
 
 class MachineAdmin(admin.ModelAdmin):
@@ -17,11 +11,42 @@ class MachineAdmin(admin.ModelAdmin):
     search_fields = ('factory_number', 'supply_contract', 'client', )
     list_filter = ('model', 'client', )
 
-# Maintenance
-# Complaint
-# Dictionary?
+
+class MaintenanceAdmin(admin.ModelAdmin):
+    list_display = ('work_order', 'work_order_date', 'date',
+                    'type', 'machine', 'maintain_corp',
+                    'service_comp')
+    list_display_links = ('work_order', 'service_comp', )
+    search_fields = ('work_order', 'maintain_corp', 'service_comp', )
+    list_filter = ('work_order_date', 'date', 'type',
+                   'maintain_corp', 'service_comp', )
+
+
+class ComplaintAdmin(admin.ModelAdmin):
+    list_display = ('date_of_complaint', 'date_of_repair', 'machine',
+                    'unit_failure', 'recovery_method', 'service_comp', )
+    list_display_links = ('date_of_complaint', 'service_comp', )
+    search_fields = ('machine', 'service_comp', )
+    list_filter = ('date_of_complaint', 'recovery_method', 'service_comp', )
+
+
+#  ?
+class DictionaryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', )
+    list_display_links = ('name', 'description', )
+    search_fields = ('name', 'description', )
+    list_filter = ('name', 'description', )
 
 
 admin.site.register(Machine, MachineAdmin)
-# admin.site.register(Maintenance, MaintenanceAdmin)
-# admin.site.register(Complaint, ComplaintAdmin)
+admin.site.register(Maintenance, MaintenanceAdmin)
+admin.site.register(Complaint, ComplaintAdmin)
+
+#  ?
+admin.site.register(Dictionary, DictionaryAdmin)
+
+admin.site.register(MachineModel)
+admin.site.register(EngineModel)
+admin.site.register(TransmissionModel)
+admin.site.register(RearAxleModel)
+admin.site.register(FrontAxle)

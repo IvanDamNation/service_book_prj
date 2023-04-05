@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'accounts_app.apps.AccountsAppConfig',
     'machine_service_app.apps.MachineServiceAppConfig',
+    'frontend_app.apps.FrontendAppConfig'
 
 ]
 

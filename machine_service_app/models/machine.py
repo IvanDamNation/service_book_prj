@@ -7,9 +7,10 @@ from .other import Dictionary, ServiceCompany
 
 
 class MachineModel(Dictionary):
-    type_dict = models.CharField(max_length=32, default='Модель машины')
+    type_dict = models.CharField(max_length=32, default='Модель машины', editable=False)
 
     class Meta:
+        # proxy = True
         verbose_name = 'Модель машины'
         verbose_name_plural = 'Модели машин'
 
@@ -18,6 +19,7 @@ class EngineModel(Dictionary):
     type_dict = models.CharField(max_length=32, default='Модель двигателя')
 
     class Meta:
+        # proxy = True
         verbose_name = 'Двигатель'
         verbose_name_plural = 'Двигатели'
 
