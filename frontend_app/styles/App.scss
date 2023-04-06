@@ -1,16 +1,296 @@
 @import "reset.css";
 @import "./fonts/fonts.css";
 
-
 body {
     font-family: 'PT Astra Sans', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* background-color: #163E6C; */
+    background-color: #163E6C;
 }
 
-h1 {
-    font-style: italic;
-    font-weight: 700;
-    font-size: larger;
+input[type=text] {
+    background-color: #EBE6D6;
+    border: 2px solid #D20A11;
+    border-radius: 20px;
+    color: #163E6C;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+}
+
+input[type=text]::placeholder {
+    color: #163E6C;
+}
+
+.wrapper {
+    padding: 0 10px;
+}
+
+.headerContainer {
+    margin: 10px;
+    background: #EBE6D6;
+    box-shadow: 0px 10px 20px rgba($color: #000000, $alpha: 1.0);
+    border-radius: 10px;
+    max-width: 1080px;
+    margin: 50px auto 10px;
+    padding: 10px;
+}
+
+.headerUp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+}
+
+.contactTelephone {
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+.authButton {
+    background-color: #163E6C;
+    color: #EBE6D6;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.authButton:hover {
+    background-color: #D20A11;
+    color: #EBE6D6;
+}
+
+.authButton:active {
+    margin-top: 5px;
+}
+
+.headerDown {
+    border: 2px solid #000;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.mainInfo {
+    text-align: center;
+    margin: 0 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.content {
+    background: #EBE6D6;
+    box-shadow: 0px 10px 20px rgba($color: #000000, $alpha: 1.0);
+    border-radius: 10px;
+    max-width: 1080px;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.searchMachine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.searchButton {
+    background-color: #163E6C;
+    color: #EBE6D6;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.searchButton:hover {
+    background-color: #D20A11;
+    color: #EBE6D6;
+}
+
+.searchButton:active {
+    margin-top: 5px;
+}
+
+.searchResult {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+.searchInfoHead {
+    display: flex;
+    justify-content: center;
+    border: 2px solid #000;
+    border-radius: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.tableContainer {
+    overflow-x:auto;
+    margin: 10px;
+    border: 2px solid #000;
+    border-radius: 20px;
+}
+
+.searchInfoTable {
+    box-sizing: border-box;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    
+    padding: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+.searchInfoTable th {
+    background-color: #163E6C;
+    color: #EBE6D6;
+}
+
+tr:nth-child(even) {background-color: #EBE6D6;}
+tr:hover {background-color: rgb(22, 62, 108, 0.1);}
+td:hover, th:hover {background-color: rgb(22, 62, 108, 0.5);}
+
+.footer {
+    background: #EBE6D6;
+    box-shadow: 0px 10px 20px rgba($color: #000, $alpha: 1.0);
+    border-radius: 10px;
+    max-width: 1080px;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.footerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+    margin: 0 10px;
+}
+
+.contactTelephoneFooter {
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+.footInfo {
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+
+@media(max-width: 870px) {
+    .headerUp {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        margin: 20px;
+    }
+
+    .contactTelephone {
+        margin: 5px;
+    }
+
+    .authButton {
+        margin: 5px 0;
+        padding: auto;
+    }
+}
+
+@media(max-width: 750px) {
+    .searchMachine {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 500px) {
+    .mainInfo {
+        text-align: center;
+        margin: 0 10px;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .headerDown {
+        font-size: 1.3rem;
+    }
+
+    .tableContainer {
+        overflow-x: unset;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .searchInfoTable thead {
+        display: none;
+    }
+
+    .searchInfoTable, .searchInfoTable tbody, .searchInfoTable tr, .searchInfoTable td {
+        display: block;
+        width: 100%;
+
+    }
+
+    .searchInfoTable tr {
+        margin-bottom: 15px;
+    }
+
+    .searchInfoTable td {
+        text-align: right;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+
+    .searchInfoTable td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .footerContainer {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contactTelephoneFooter {
+        margin: 3px;
+    }
+
+    .footInfo {
+        margin: 3px;
+    }
 }
