@@ -9,6 +9,7 @@ db.sqlite3
 keys.py
 build/
 node_modules/
+.code-workspace
 
 .pnp/
 .pnp.js

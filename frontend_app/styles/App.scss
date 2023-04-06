@@ -1,0 +1,16 @@
+@import "reset.css";
+@import "./fonts/fonts.css";
+
+
+body {
+    font-family: 'PT Astra Sans', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* background-color: #163E6C; */
+}
+
+h1 {
+    font-style: italic;
+    font-weight: 700;
+    font-size: larger;
+}
