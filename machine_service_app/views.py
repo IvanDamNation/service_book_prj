@@ -5,7 +5,12 @@ from machine_service_app.models import Machine, Maintenance
 from .serializers import MachineSerializer, MaintenanceSerializer, ComplaintSerializer
 
 
-class MachineView(generics.CreateAPIView):
+class MachineGETView(generics.ListAPIView):
+    queryset = Machine.objects.all()
+    serializer_class = MachineSerializer
+
+
+class MachinePOSTView(generics.ListAPIView):
     queryset = Machine.objects.all()
     serializer_class = MachineSerializer
 
@@ -18,4 +23,3 @@ class MaintenanceView(generics.CreateAPIView):
 class ComplaintView(generics.CreateAPIView):
     queryset = Maintenance.objects.all()
     serializer_class = ComplaintSerializer
-

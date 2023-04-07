@@ -18,7 +18,6 @@ from keys import DJANGO_ALLOWED_HOSTS, DJANGO_KEY
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -44,7 +43,11 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    'django_rest_allauth',
     'rest_framework',
+    'rest_framework.authtoken',
+
+    'corsheaders',
 
     'accounts_app.apps.AccountsAppConfig',
     'machine_service_app.apps.MachineServiceAppConfig',
@@ -62,7 +65,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware'
 ]
+
+# REST options
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+        ('rest_framework.authentication.TokenAuthentication',),
+    'DEFAULT_PERMISSION_CLASSES':
+        ('rest_framework.permissions.IsAuthenticated',
+         'rest_framework.permissions.AllowAny'),
+}
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -91,10 +108,15 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/login/'
 
 LOGIN_REDIRECT_URL = '/'
 
+# A custom variable we created to tell the CustomAccountAdapter whether to
+# allow signups.
+ACCOUNT_ALLOW_SIGNUPS = False
+
 SOCIALACCOUNT_AUTO_SIGNUP = False
 
-WSGI_APPLICATION = 'service_book_prj.wsgi.application'
+EMAIL_CONFIRMATION_HMAC = False
 
+WSGI_APPLICATION = 'service_book_prj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -105,7 +127,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -125,7 +146,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -137,11 +157,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'frontend_app/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
