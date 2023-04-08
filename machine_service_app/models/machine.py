@@ -47,23 +47,57 @@ class FrontAxle(Dictionary):
 
 
 class Machine(models.Model):
-    factory_number = models.CharField(max_length=32, unique=True, verbose_name='Зав. № машины')
-    model = models.ForeignKey(MachineModel, on_delete=models.PROTECT, verbose_name='Модель техники')
-    engine = models.ForeignKey(EngineModel, on_delete=models.PROTECT, verbose_name='Модель двигателя')
-    engine_num = models.CharField(max_length=16, unique=True, verbose_name='Зав. № двигателя')
-    transmission = models.ForeignKey(TransmissionModel, on_delete=models.PROTECT, verbose_name='Модель трансмиссии')
-    transmission_num = models.CharField(max_length=16, unique=True, verbose_name='Зав. № трансмиссии')
-    rear_axle = models.ForeignKey(RearAxleModel, on_delete=models.PROTECT, verbose_name='Модель ведущего моста')
-    rear_axle_num = models.CharField(max_length=16, unique=True, verbose_name='Зав. № ведущего моста')
-    front_axle = models.ForeignKey(FrontAxle, on_delete=models.PROTECT, verbose_name='Модель управляемого моста')
-    front_axle_num = models.CharField(max_length=16, verbose_name='Зав. № управляемого моста')
-    supply_contract = models.CharField(max_length=32, verbose_name='Договор поставки №, дата')
-    shipment_date = models.DateField(default=date.today, verbose_name='Дата отгрузки с завода')
-    consignee = models.CharField(max_length=64, verbose_name='Грузополучатель (конечный потребитель)')
-    shipment_address = models.CharField(max_length=128, verbose_name='Адрес поставки (эксплуатации)')
-    equipment = models.CharField(max_length=128, verbose_name='Комплектация (доп. опции)')
-    client = models.ForeignKey(Customer, on_delete=models.PROTECT, verbose_name='Клиент')
-    service_comp = models.ForeignKey(ServiceCompany, on_delete=models.PROTECT, verbose_name='Сервисная компания')
+    factory_number = models.CharField(
+        max_length=32, unique=True, verbose_name='Зав. № машины'
+    )
+    model = models.ForeignKey(
+        MachineModel, on_delete=models.PROTECT, verbose_name='Модель техники'
+    )
+    engine = models.ForeignKey(
+        EngineModel, on_delete=models.PROTECT, verbose_name='Модель двигателя'
+    )
+    engine_num = models.CharField(
+        max_length=16, unique=True, verbose_name='Зав. № двигателя'
+    )
+    transmission = models.ForeignKey(
+        TransmissionModel, on_delete=models.PROTECT, verbose_name='Модель трансмиссии'
+    )
+    transmission_num = models.CharField(
+        max_length=16, unique=True, verbose_name='Зав. № трансмиссии'
+    )
+    rear_axle = models.ForeignKey(
+        RearAxleModel, on_delete=models.PROTECT, verbose_name='Модель ведущего моста'
+    )
+    rear_axle_num = models.CharField(
+        max_length=16, unique=True, verbose_name='Зав. № ведущего моста'
+    )
+    front_axle = models.ForeignKey(
+        FrontAxle, on_delete=models.PROTECT, verbose_name='Модель управляемого моста'
+    )
+    front_axle_num = models.CharField(
+        max_length=16, verbose_name='Зав. № управляемого моста'
+    )
+    supply_contract = models.CharField(
+        max_length=32, verbose_name='Договор поставки №, дата'
+    )
+    shipment_date = models.DateField(
+        default=date.today, verbose_name='Дата отгрузки с завода'
+    )
+    consignee = models.CharField(
+        max_length=64, verbose_name='Грузополучатель (конечный потребитель)'
+    )
+    shipment_address = models.CharField(
+        max_length=128, verbose_name='Адрес поставки (эксплуатации)'
+    )
+    equipment = models.CharField(
+        max_length=128, verbose_name='Комплектация (доп. опции)'
+    )
+    client = models.ForeignKey(
+        Customer, on_delete=models.PROTECT, verbose_name='Клиент', related_name='owner'
+    )
+    service_comp = models.ForeignKey(
+        ServiceCompany, on_delete=models.PROTECT, verbose_name='Сервисная компания', related_name='service'
+    )
 
     def __str__(self):
         return '{}'.format(self.factory_number)

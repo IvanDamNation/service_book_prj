@@ -3,7 +3,8 @@ from django.contrib import admin
 from machine_service_app.models import \
     Machine, Maintenance, Complaint, \
     Dictionary, MachineModel, EngineModel, \
-    TransmissionModel, RearAxleModel, FrontAxle
+    TransmissionModel, RearAxleModel, FrontAxle, \
+    ServiceCompany
 
 
 class MachineAdmin(admin.ModelAdmin):
@@ -38,9 +39,17 @@ class DictionaryElementsAdmin(admin.ModelAdmin):
     list_filter = ('name', 'description', )
 
 
+class ServiceCompanyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', )
+    list_display_links = ('name', 'description', )
+    search_fields = ('name', 'description', )
+    list_filter = ('name', 'description', )
+
+
 admin.site.register(Machine, MachineAdmin)
 admin.site.register(Maintenance, MaintenanceAdmin)
 admin.site.register(Complaint, ComplaintAdmin)
+admin.site.register(ServiceCompany, ServiceCompanyAdmin)
 
 # admin.site.register(Dictionary)
 

@@ -18,6 +18,9 @@ class ServiceCompany(models.Model):
     name = models.CharField(max_length=32, verbose_name='Описание')
     description = models.TextField(verbose_name='Описание')
 
+    def __str__(self):
+        return '{}'.format(self.name)
+
     class Meta:
         verbose_name = 'Сервисная компания'
         verbose_name_plural = 'Сервисные компании'

@@ -9,7 +9,7 @@ body {
     background-color: #163E6C;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
     background-color: #EBE6D6;
     border: 2px solid #D20A11;
     border-radius: 20px;
@@ -19,8 +19,19 @@ input[type=text] {
     font-size: 1.3rem;
 }
 
-input[type=text]::placeholder {
+input[type=text]::placeholder, input[type=password]::placeholder {
     color: #163E6C;
+}
+
+.authForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.authInput {
+    margin: 5px;
+    inline-size: 230px;
 }
 
 .wrapper {
@@ -312,6 +323,12 @@ td:hover, th:hover {background-color: rgb(22, 62, 108, 0.5);}
 
 @media(max-width: 750px) {
     .searchMachine {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 640px) {
+    .authForm {
         flex-direction: column;
     }
 }
