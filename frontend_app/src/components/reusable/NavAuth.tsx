@@ -1,17 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 
-const NavAuth = () => {
+import { NavLink } from "react-router-dom";
+
+const NavAuth: FC = () => {
     return (
         <div className="infoNavContainer">
             <ul className="infoNav">
-                <li>
-                    <button className="mainInfoBtn">Общая инфо</button>
+                <li className="mainInfoBtnWrapper">
+                    <NavLink className="mainInfoBtn" to={'/main_info'}>Общая инфо</NavLink>
                 </li>
-                <li>
-                    <button className="mainInfoBtn">Техобслуживание</button>
+                <li className="mainInfoBtnWrapper">
+                    <NavLink className="mainInfoBtn" to={'/maintanence'}>Техобслуживание</NavLink>
                 </li>
-                <li>
-                    <button className="mainInfoBtn">Рекламации</button>
+                <li className="mainInfoBtnWrapper">
+                    <NavLink className="mainInfoBtn" to={'/reclamations'}>Рекламации</NavLink>
                 </li>
             </ul>
         </div>

@@ -1,5 +1,5 @@
 export interface IMachine {
-    pk: string;
+    pk: number;
     factory_number: string;
     model: string;
     engine: string;

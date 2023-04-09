@@ -212,23 +212,32 @@ td:hover, th:hover {background-color: rgb(22, 62, 108, 0.5);}
     text-align: justify;
 }
 
-.mainInfoBtn {
+.mainInfoBtnWrapper {
     background-color: #163E6C;
-    color: #EBE6D6;
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin: 10px 10px;
-    text-align: center;
-    font-size: 1.3rem;
 }
 
-.mainInfoBtn:hover {
+.mainInfoBtnWrapper:hover {
     background-color: #D20A11;
     color: #EBE6D6;
 }
 
+.mainInfoBtnWrapper:active {
+    margin-bottom: 5px;
+}
+
+.mainInfoBtn {
+    color: #EBE6D6;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
 .mainInfoBtn:active {
     margin-bottom: 5px;
+    background-color: #D20A11;
+    color: #EBE6D6;
 }
 
 .descriptionContainer {

@@ -9,7 +9,7 @@ class MachineSerializer(serializers.ModelSerializer):
     engine = serializers.CharField(source='engine.enginemodel')
     transmission = serializers.CharField(source='transmission.transmissionmodel')
     rear_axle = serializers.CharField(source='rear_axle.rearaxlemodel')
-    front_axle = serializers.CharField(source='front_axle.frontaxle')
+    front_axle = serializers.CharField(source='front_axle.name')
     client = serializers.CharField(source='client.user')
     service_comp = serializers.CharField(source='service_comp.name')
 
@@ -37,14 +37,14 @@ class MaintenanceSerializer(serializers.ModelSerializer):
 
 
 class ComplaintSerializer(serializers.ModelSerializer):
-    unit_failure = serializers.CharField(source='unit_failure.failuretype')
+    unit_failure = serializers.CharField(source='unit_failure.name')
     recovery_method = serializers.CharField(source='recovery_method.recoverymethods')
     machine = serializers.CharField(source='machine.factory_number')
     service_comp = serializers.CharField(source='service_comp.manager')
 
     class Meta:
         model = Complaint
-        fields = ('date_of_complaint', 'operating_hours', 'unit_failure',
+        fields = ('pk', 'date_of_complaint', 'operating_hours', 'unit_failure',
                   'failure_description', 'recovery_method', 'used_parts',
                   'date_of_repair', 'machine', 'service_comp')
 

@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import TableInfo from "../reusable/TableInfo";
 import NavAuth from "../reusable/NavAuth";
 import { IMachine } from "../../types/machine/machine";
 import axios from "axios";
-// import Raw from "../reusable/table_components/Raw";
-import List from "../reusable/List";
 
 
-const InfoAuthMain = () => {
+const InfoAuthMain: FC = () => {
     const [machines, setMachines] = useState<IMachine[]>([]);
 
     useEffect(() => {
@@ -18,7 +16,7 @@ const InfoAuthMain = () => {
     async function fetchInfo () {
         try {
             const response = await axios.get<IMachine[]>(
-                "http://127.0.0.1:8000/service_center/get_machine"
+                "http://127.0.0.1:8000/service_center/machine/"
             );
             setMachines(response.data);
         } catch (e) {
@@ -27,13 +25,13 @@ const InfoAuthMain = () => {
     }
 
     const colNames = [
-        'pk', "Серийный номер", "Модель", "Двигатель", "Номер двигателя", 
+        "pk", "Серийный номер", "Модель", "Двигатель", "Номер двигателя", 
         "Трансмиссия", "Номер трансмиссии", 'Модель ведущего моста', 
-        'Зав. № ведущего моста', 'Модель управляемого моста', 
-        'Зав. № управляемого моста', 'Договор поставки №, дата',
-        'Дата отгрузки с завода', 'Грузополучатель (конечный потребитель)',
-        'Адрес поставки (эксплуатации)', 'Комплектация (доп. опции)',
-        'Клиент', 'Сервисная компания'
+        "Зав. № ведущего моста", "Модель управляемого моста", 
+        "Зав. № управляемого моста", "Договор поставки №, дата",
+        "Дата отгрузки с завода", "Грузополучатель (конечный потребитель)",
+        "Адрес поставки (эксплуатации)", "Комплектация (доп. опции)",
+        "Клиент", "Сервисная компания"
     ]
 
     return (
@@ -49,7 +47,7 @@ const InfoAuthMain = () => {
                     Вашей техники
                 </h2>
                 <NavAuth />
-                <TableInfo machines={machines} colNames={colNames}/>
+                <TableInfo mainProps={machines} colNames={colNames}/>
             </div>
         </div>
     );

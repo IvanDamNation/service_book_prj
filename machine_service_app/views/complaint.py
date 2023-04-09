@@ -1,14 +1,14 @@
 from rest_framework import generics, viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from machine_service_app.models import Maintenance
+from machine_service_app.models import Maintenance, Complaint
 from machine_service_app.permissions import IsAdminOrReadOnly
 from machine_service_app.serializers import ComplaintSerializer
 
 
 # main for GET
 class ComplaintViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Maintenance.objects.select_related(
+    queryset = Complaint.objects.select_related(
         'unit_failure',
         'recovery_method',
         'machine',
@@ -19,7 +19,7 @@ class ComplaintViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class ComplaintSearchView(generics.RetrieveAPIView):
-    queryset = Maintenance.objects.select_related(
+    queryset = Complaint.objects.select_related(
         'unit_failure',
         'recovery_method',
         'machine',
@@ -30,7 +30,7 @@ class ComplaintSearchView(generics.RetrieveAPIView):
 
 
 class ComplaintGETListView(generics.ListAPIView):
-    queryset = Maintenance.objects.select_related(
+    queryset = Complaint.objects.select_related(
         'unit_failure',
         'recovery_method',
         'machine',
@@ -42,7 +42,7 @@ class ComplaintGETListView(generics.ListAPIView):
 
 class ComplaintPOSTView(generics.CreateAPIView):
     # permission_required = 'machine_service_app.add_complaint'
-    queryset = Maintenance.objects.select_related(
+    queryset = Complaint.objects.select_related(
         'unit_failure',
         'recovery_method',
         'machine',
@@ -54,7 +54,7 @@ class ComplaintPOSTView(generics.CreateAPIView):
 
 class ComplaintPUTView(generics.UpdateAPIView):
     # permission_required = 'machine_service_app.add_complaint'
-    queryset = Maintenance.objects.select_related(
+    queryset = Complaint.objects.select_related(
         'unit_failure',
         'recovery_method',
         'machine',
@@ -66,7 +66,7 @@ class ComplaintPUTView(generics.UpdateAPIView):
 
 class ComplaintDestroyView(generics.RetrieveDestroyAPIView):
     # permission_required = 'machine_service_app.add_complaint'
-    queryset = Maintenance.objects.select_related(
+    queryset = Complaint.objects.select_related(
         'unit_failure',
         'recovery_method',
         'machine',

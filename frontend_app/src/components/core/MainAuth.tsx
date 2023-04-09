@@ -9,6 +9,7 @@ import {
 import Description from "../reusable/Description";
 import InfoAuthMain from "../layout/InfoAuthMain";
 import InfoAuthTechnical from "../layout/InfoAuthTechnical";
+import InfoAuthComplaint from "../layout/InfoAuthComplaint";
 
 
 const MainAuth = () => {
@@ -16,6 +17,7 @@ const MainAuth = () => {
         <div className="contentAuth">
                 <InfoAuthMain />
                 <InfoAuthTechnical />
+                <InfoAuthComplaint />
                 <Description />
         </div>
     );
