@@ -66,13 +66,15 @@ class Machine(models.Model):
         max_length=16, unique=True, verbose_name='Зав. № трансмиссии'
     )
     rear_axle = models.ForeignKey(
-        RearAxleModel, on_delete=models.PROTECT, verbose_name='Модель ведущего моста'
+        RearAxleModel, on_delete=models.PROTECT, verbose_name='Модель ведущего моста',
+        related_name='rearaxle'
     )
     rear_axle_num = models.CharField(
         max_length=16, unique=True, verbose_name='Зав. № ведущего моста'
     )
     front_axle = models.ForeignKey(
-        FrontAxle, on_delete=models.PROTECT, verbose_name='Модель управляемого моста'
+        FrontAxle, on_delete=models.PROTECT, verbose_name='Модель управляемого моста',
+        related_name='frontaxle'
     )
     front_axle_num = models.CharField(
         max_length=16, verbose_name='Зав. № управляемого моста'
@@ -93,7 +95,7 @@ class Machine(models.Model):
         max_length=128, verbose_name='Комплектация (доп. опции)'
     )
     client = models.ForeignKey(
-        Customer, on_delete=models.PROTECT, verbose_name='Клиент'
+        Customer, on_delete=models.PROTECT, verbose_name='Клиент', related_name='client'
     )
     service_comp = models.ForeignKey(
         ServiceCompany, on_delete=models.PROTECT, verbose_name='Сервисная компания',
