@@ -1,10 +1,8 @@
 from django.contrib import admin
 
 from machine_service_app.models import \
-    Machine, Maintenance, Complaint, \
-    Dictionary, MachineModel, EngineModel, \
-    TransmissionModel, RearAxleModel, FrontAxle, \
-    ServiceCompany, MaintainType, FailureType, RecoveryMethods
+    Machine, Maintenance, Complaint, MachineModel, EngineModel, \
+    TransmissionModel, RearAxleModel, FrontAxle, MaintainType, FailureType, RecoveryMethods, ServiceCompany, Dictionary
 
 
 class MachineAdmin(admin.ModelAdmin):

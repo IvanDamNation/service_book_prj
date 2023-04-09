@@ -10,7 +10,10 @@ from .machine import \
 # maintenance
 from .maintenance import \
     MaintainType, \
-    Maintenance, \
+    Maintenance
+
+# complaint
+from .complaint import \
     FailureType, \
     RecoveryMethods, \
     Complaint

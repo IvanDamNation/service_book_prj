@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from machine_service_app.models import Machine, Maintenance, Complaint, Dictionary
+from machine_service_app.models import \
+    Machine, Maintenance, Complaint, Dictionary
 
 
 class MachineSerializer(serializers.ModelSerializer):
