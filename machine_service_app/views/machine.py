@@ -6,6 +6,7 @@ from machine_service_app.permissions import IsAdminOrReadOnly
 from machine_service_app.serializers import MachineSerializer
 
 
+# main for GET
 class MachineViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Machine.objects.select_related(
         'model',
