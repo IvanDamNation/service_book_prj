@@ -37,6 +37,11 @@ class MaintenanceSerializer(serializers.ModelSerializer):
 
 
 class ComplaintSerializer(serializers.ModelSerializer):
+    unit_failure = serializers.CharField(source='unit_failure.failuretype')
+    recovery_method = serializers.CharField(source='recovery_method.recoverymethods')
+    machine = serializers.CharField(source='machine.factory_number')
+    service_comp = serializers.CharField(source='service_comp.manager')
+
     class Meta:
         model = Complaint
         fields = ('date_of_complaint', 'operating_hours', 'unit_failure',

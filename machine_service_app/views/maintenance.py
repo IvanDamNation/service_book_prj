@@ -5,7 +5,7 @@ from machine_service_app.permissions import IsAdminOrReadOnly
 from machine_service_app.serializers import MaintenanceSerializer, ComplaintSerializer
 
 
-# Maintenance
+# main for GET
 class MaintenanceViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Maintenance.objects.select_related(
         'type',
@@ -22,7 +22,7 @@ class MaintenanceSearchView(generics.RetrieveAPIView):
         'type',
         'maintain_corp',
         'machine',
-        'service_corp'
+        'service_comp'
     ).all()
     serializer_class = MaintenanceSerializer
     permission_classes = (AllowAny,)
@@ -73,9 +73,3 @@ class MaintenanceDestroyView(generics.UpdateAPIView):
     ).all()
     serializer_class = MaintenanceSerializer
     permission_classes = (IsAdminOrReadOnly, )
-
-
-# Complaint
-class ComplaintView(generics.CreateAPIView):
-    queryset = Maintenance.objects.all()
-    serializer_class = ComplaintSerializer

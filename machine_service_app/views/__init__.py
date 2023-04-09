@@ -19,4 +19,10 @@ from .maintenance import \
 
 
 # complaint
-from .maintenance import ComplaintView
+from .complaint import \
+    ComplaintViewSet, \
+    ComplaintSearchView, \
+    ComplaintGETListView, \
+    ComplaintPOSTView, \
+    ComplaintPUTView, \
+    ComplaintDestroyView
