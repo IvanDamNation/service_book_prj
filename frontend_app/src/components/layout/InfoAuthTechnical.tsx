@@ -2,6 +2,9 @@ import React from "react";
 
 import TableInfo from "../reusable/TableInfo";
 import NavAuth from "../reusable/NavAuth";
+import { IMachine } from "../../types/machine/machine";
+
+
 
 
 const InfoAuthTechnical = () => {
@@ -19,7 +22,7 @@ const InfoAuthTechnical = () => {
                         техники
                     </h2>
                     <NavAuth />
-                    <TableInfo />
+                    {/* <TableInfo /> */}
                 </div>
             </div>
     );

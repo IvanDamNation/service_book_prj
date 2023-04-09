@@ -93,10 +93,11 @@ class Machine(models.Model):
         max_length=128, verbose_name='Комплектация (доп. опции)'
     )
     client = models.ForeignKey(
-        Customer, on_delete=models.PROTECT, verbose_name='Клиент', related_name='owner'
+        Customer, on_delete=models.PROTECT, verbose_name='Клиент'
     )
     service_comp = models.ForeignKey(
-        ServiceCompany, on_delete=models.PROTECT, verbose_name='Сервисная компания', related_name='service'
+        ServiceCompany, on_delete=models.PROTECT, verbose_name='Сервисная компания',
+        related_name='service'
     )
 
     def __str__(self):

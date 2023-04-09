@@ -7,7 +7,6 @@ from machine_service_app.models import Machine, Maintenance, Complaint, Dictiona
 class MachineSerializer(serializers.ModelSerializer):
     # user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     # service_comp = serializers.HiddenField(default=serializers.CurrentUserDefault())
-
     class Meta:
         model = Machine
         fields = ('pk', 'factory_number', 'model',

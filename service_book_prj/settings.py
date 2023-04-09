@@ -96,7 +96,9 @@ ROOT_URLCONF = 'service_book_prj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'build')],
+        'DIRS': [
+            # os.path.join(BASE_DIR, 'build')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,11 +117,11 @@ LOGIN_REDIRECT_URL = '/'
 
 # A custom variable we created to tell the CustomAccountAdapter whether to
 # allow signups.
-# ACCOUNT_ALLOW_SIGNUPS = False
+ACCOUNT_ALLOW_SIGNUPS = False
 
-# SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_AUTO_SIGNUP = False
 
-# EMAIL_CONFIRMATION_HMAC = False
+EMAIL_CONFIRMATION_HMAC = False
 
 WSGI_APPLICATION = 'service_book_prj.wsgi.application'
 
@@ -171,7 +173,7 @@ STATIC_URL = '/frontend_app/'
 #     os.path.join(BASE_DIR, 'build/static')
 # ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

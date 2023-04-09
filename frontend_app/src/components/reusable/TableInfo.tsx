@@ -1,28 +1,42 @@
-import React from "react";
+import React, { FC } from "react";
+import { IMachine } from "../../types/machine/machine";
+// import Raw from "./table_components/Raw";
+import List from "./List";
+import Raw from "./table_components/Raw";
+// import Raw from "./table_components/Raw";
 
 
-const TableInfo = () => {
+interface TableInfoProps {
+    machines: IMachine[];
+    colNames: string[];
+    width?: string | number;
+    height?: string | number;
+}
+
+const TableInfo: FC<TableInfoProps> = ({machines, colNames, width='auto', height='auto'}) => {
+
     return (
         <div className="tableContainer">
-            <table className="searchInfoTable">
+            <table className="searchInfoTable" cellSpacing={0} style={{ width:width, height:height }}>
                 <thead>
                     <tr>
-                        <th>One</th>
-                        <th>Two</th>
-                        <th>Three</th>
+                        {colNames.map((headerItem, index) => (
+                            <th key={index}>
+                                {headerItem.toUpperCase()}
+                            </th>
+                        ))}
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td data-label="One">Four</td>
-                        <td data-label="Two">Five</td>
-                        <td data-label="Three">Six</td>
-                    </tr>
-                    <tr>
-                        <td data-label="One">Seven</td>
-                        <td data-label="Two">Eight</td>
-                        <td data-label="Three">Nine</td>
-                    </tr>
+                    {Object.values(machines).map((obj, index) => (
+                        <tr key={index}>
+                            {Object.values(obj).map((value, index2) => (
+                                <td key={index2}>
+                                    {value}
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

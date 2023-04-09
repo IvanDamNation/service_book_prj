@@ -2,6 +2,7 @@ export interface IMachine {
     pk: number;
     factory_number: string;
     model: number;
+    engine: number;
     engine_num: string;
     transmission: number;
     transmission_num: string;
