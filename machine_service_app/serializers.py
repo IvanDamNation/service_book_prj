@@ -24,6 +24,11 @@ class MachineSerializer(serializers.ModelSerializer):
 
 
 class MaintenanceSerializer(serializers.ModelSerializer):
+    type = serializers.CharField(source='type.maintaintype')
+    maintain_corp = serializers.CharField(source='maintain_corp.servicecompany')
+    machine = serializers.CharField(source='machine.machine')
+    service_comp = serializers.CharField(source='service_comp.servicemanager')
+
     class Meta:
         model = Maintenance
         fields = ('pk', 'type', 'date',

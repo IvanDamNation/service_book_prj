@@ -1,11 +1,9 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.shortcuts import render
-from django.template.context_processors import request
-from rest_framework import generics, viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
-from machine_service_app.models import Machine, Maintenance
-from .permissions import IsAdminOrReadOnly
-from .serializers import MachineSerializer, MaintenanceSerializer, ComplaintSerializer
+from rest_framework import viewsets, generics
+from rest_framework.permissions import AllowAny, IsAuthenticated
+
+from machine_service_app.models import Machine
+from machine_service_app.permissions import IsAdminOrReadOnly
+from machine_service_app.serializers import MachineSerializer
 
 
 class MachineViewSet(viewsets.ReadOnlyModelViewSet):
@@ -33,6 +31,7 @@ class MachineSearchView(generics.RetrieveAPIView):
         'service_comp'
     ).all()
     serializer_class = MachineSerializer
+    permission_classes = (AllowAny,)
 
 
 class MachineGETListView(generics.ListAPIView):
@@ -61,6 +60,7 @@ class MachinePOSTView(generics.CreateAPIView):
         'service_comp'
     ).all()
     serializer_class = MachineSerializer
+    permission_classes = (IsAuthenticated, )
 
 
 class MachinePUTView(generics.UpdateAPIView):
@@ -75,6 +75,7 @@ class MachinePUTView(generics.UpdateAPIView):
         'service_comp'
     ).all()
     serializer_class = MachineSerializer
+    permission_classes = (IsAuthenticated, )
 
 
 class MachineDestroyView(generics.RetrieveDestroyAPIView):
@@ -88,16 +89,4 @@ class MachineDestroyView(generics.RetrieveDestroyAPIView):
         'service_comp'
     ).all()
     serializer_class = MachineSerializer
-    permission_classes = (IsAdminOrReadOnly,)
-
-
-# Maintenance
-class MaintenanceView(generics.CreateAPIView):
-    queryset = Maintenance.objects.all()
-    serializer_class = MaintenanceSerializer
-
-
-# Complaint
-class ComplaintView(generics.CreateAPIView):
-    queryset = Maintenance.objects.all()
-    serializer_class = ComplaintSerializer
+    permission_classes = (IsAdminOrReadOnly, )
