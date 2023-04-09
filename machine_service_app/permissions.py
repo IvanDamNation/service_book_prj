@@ -13,3 +13,9 @@ class IsMachineOwner(permissions.BasePermission):
     def has_permission(self, request, view):
         if request.client == request.user and permissions.SAFE_METHODS:
             return True
+
+
+class IsMachineServiceman(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if request.service_comp == request.user and permissions.SAFE_METHODS:
+            return True

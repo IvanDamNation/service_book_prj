@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from accounts_app.models import ServiceManager
 from machine_service_app.models import \
     Machine, Maintenance, Complaint, MachineModel, EngineModel, \
     TransmissionModel, RearAxleModel, FrontAxle, MaintainType, FailureType, RecoveryMethods, ServiceCompany, Dictionary
@@ -59,7 +58,6 @@ admin.site.register(RearAxleModel, DictionaryElementsAdmin)
 admin.site.register(FrontAxle, DictionaryElementsAdmin)
 
 admin.site.register(MaintainType, DictionaryElementsAdmin)
-admin.site.register(ServiceManager, DictionaryElementsAdmin)
 
 admin.site.register(FailureType, DictionaryElementsAdmin)
 admin.site.register(RecoveryMethods, DictionaryElementsAdmin)
