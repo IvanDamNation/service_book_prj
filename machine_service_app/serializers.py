@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from rest_framework.renderers import JSONRenderer
 
 from machine_service_app.models import Machine, Maintenance, Complaint, Dictionary
 
@@ -25,9 +24,9 @@ class MachineSerializer(serializers.ModelSerializer):
 
 class MaintenanceSerializer(serializers.ModelSerializer):
     type = serializers.CharField(source='type.maintaintype')
-    maintain_corp = serializers.CharField(source='maintain_corp.servicecompany')
-    machine = serializers.CharField(source='machine.machine')
-    service_comp = serializers.CharField(source='service_comp.servicemanager')
+    maintain_corp = serializers.CharField(source='maintain_corp.name')
+    machine = serializers.CharField(source='machine.factory_number')
+    service_comp = serializers.CharField(source='service_comp.manager')
 
     class Meta:
         model = Maintenance

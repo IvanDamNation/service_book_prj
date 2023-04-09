@@ -4,7 +4,7 @@ from machine_service_app.models import \
     Machine, Maintenance, Complaint, \
     Dictionary, MachineModel, EngineModel, \
     TransmissionModel, RearAxleModel, FrontAxle, \
-    ServiceCompany
+    ServiceCompany, MaintainType, FailureType, RecoveryMethods
 
 
 class MachineAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class MachineAdmin(admin.ModelAdmin):
 
 
 class MaintenanceAdmin(admin.ModelAdmin):
-    list_display = ('work_order', 'work_order_date', 'date',
+    list_display = ('type', 'work_order', 'work_order_date', 'date',
                     'type', 'machine', 'maintain_corp',
                     'service_comp')
     list_display_links = ('work_order', 'service_comp', )
@@ -58,3 +58,7 @@ admin.site.register(EngineModel, DictionaryElementsAdmin)
 admin.site.register(TransmissionModel, DictionaryElementsAdmin)
 admin.site.register(RearAxleModel, DictionaryElementsAdmin)
 admin.site.register(FrontAxle, DictionaryElementsAdmin)
+
+admin.site.register(MaintainType, DictionaryElementsAdmin)
+admin.site.register(FailureType, DictionaryElementsAdmin)
+admin.site.register(RecoveryMethods, DictionaryElementsAdmin)

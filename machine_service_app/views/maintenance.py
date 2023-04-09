@@ -11,7 +11,7 @@ class MaintenanceViewSet(viewsets.ReadOnlyModelViewSet):
         'type',
         'maintain_corp',
         'machine',
-        'service_corp'
+        'service_comp'
     ).all()
     serializer_class = MaintenanceSerializer
     permission_classes = (AllowAny, )
@@ -33,7 +33,7 @@ class MaintenanceGETListView(generics.ListAPIView):
         'type',
         'maintain_corp',
         'machine',
-        'service_corp'
+        'service_comp'
     ).all()
     serializer_class = MaintenanceSerializer
     permission_classes = (AllowAny, )
@@ -45,7 +45,7 @@ class MaintenancePOSTView(generics.CreateAPIView):
         'type',
         'maintain_corp',
         'machine',
-        'service_corp'
+        'service_comp'
     ).all()
     serializer_class = MaintenanceSerializer
     permission_classes = (IsAuthenticated, )
@@ -57,7 +57,7 @@ class MaintenancePUTView(generics.UpdateAPIView):
         'type',
         'maintain_corp',
         'machine',
-        'service_corp'
+        'service_comp'
     ).all()
     serializer_class = MaintenanceSerializer
     permission_classes = (IsAuthenticated,)
@@ -69,7 +69,7 @@ class MaintenanceDestroyView(generics.UpdateAPIView):
         'type',
         'maintain_corp',
         'machine',
-        'service_corp'
+        'service_comp'
     ).all()
     serializer_class = MaintenanceSerializer
     permission_classes = (IsAdminOrReadOnly, )
