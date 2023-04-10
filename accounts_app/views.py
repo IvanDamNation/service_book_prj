@@ -66,7 +66,7 @@ class LoginView(APIView):
 
     def post(self, request, format=None):
         data = self.request.data
-
+        print(data)
         username = data['username']
         password = data['password']
 
@@ -118,7 +118,7 @@ class DeleteAccountView(APIView):
 
 # @method_decorator(csrf_protect, name='dispatch')
 class GetUsersView(APIView):
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAdminUser, )
 
     def get(self, request, format=None):
         users = User.objects.all()
@@ -150,7 +150,7 @@ class GetUserCustomerView(APIView):
 
 @method_decorator(csrf_protect, name='dispatch')
 class UpdateUserProfileView(APIView):
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticated, )
 
     def put(self, request, format=None):
 

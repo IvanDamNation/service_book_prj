@@ -1,8 +1,5 @@
-import React, { FC } from "react";
-import { IMachine } from "../../types/machine/machine";
-import { IComplaint } from "../../types/machine/complaint";
+import { FC } from "react";
 import { MainProps } from "../../types/other";
-// import Raw from "./table_components/Raw";
 
 
 interface TableInfoProps {
@@ -11,7 +8,6 @@ interface TableInfoProps {
     width?: string | number;
     height?: string | number;
 }
-
 
 const TableInfo: FC<TableInfoProps> = ({mainProps, colNames, width='auto', height='auto'}) => {
 
