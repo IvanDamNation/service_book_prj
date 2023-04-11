@@ -26,7 +26,7 @@ export const App = () => {
                     </header>
                     <main>
                         <Routes>
-                            <Route path="/auth" element={<MainAuth />} >AuthPage</ Route>
+                            {/* <Route path="/auth" element={<MainAuth />} >AuthPage</ Route> */}
                             <Route path="/" element={<MainAnonymous />} />
                             <Route path="/main_info" element={<InfoAuthMain />}/>
                             <Route path="/maintanence" element={<InfoAuthTechnical />}/>
